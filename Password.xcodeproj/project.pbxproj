@@ -12,6 +12,9 @@
 		B062006E2BD0FBB800E64EF3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062006D2BD0FBB800E64EF3 /* ViewController.swift */; };
 		B06200732BD0FBB900E64EF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B06200722BD0FBB900E64EF3 /* Assets.xcassets */; };
 		B06200762BD0FBB900E64EF3 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B06200752BD0FBB900E64EF3 /* Base */; };
+		B062007F2BD1006000E64EF3 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062007E2BD1006000E64EF3 /* PasswordTextField.swift */; };
+		B06200832BD1189B00E64EF3 /* PasswordCriteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06200822BD1189B00E64EF3 /* PasswordCriteriaView.swift */; };
+		B06200862BD1426600E64EF3 /* PasswordStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06200852BD1426600E64EF3 /* PasswordStatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		B06200722BD0FBB900E64EF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B06200752BD0FBB900E64EF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B06200772BD0FBB900E64EF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B062007E2BD1006000E64EF3 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
+		B06200822BD1189B00E64EF3 /* PasswordCriteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCriteriaView.swift; sourceTree = "<group>"; };
+		B06200852BD1426600E64EF3 /* PasswordStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,8 @@
 				B06200692BD0FBB800E64EF3 /* AppDelegate.swift */,
 				B062006B2BD0FBB800E64EF3 /* SceneDelegate.swift */,
 				B062006D2BD0FBB800E64EF3 /* ViewController.swift */,
+				B062007E2BD1006000E64EF3 /* PasswordTextField.swift */,
+				B06200812BD1185B00E64EF3 /* PasswordStatusView */,
 			);
 			path = Password;
 			sourceTree = "<group>";
@@ -70,6 +78,15 @@
 				B06200772BD0FBB900E64EF3 /* Info.plist */,
 			);
 			name = Files;
+			sourceTree = "<group>";
+		};
+		B06200812BD1185B00E64EF3 /* PasswordStatusView */ = {
+			isa = PBXGroup;
+			children = (
+				B06200822BD1189B00E64EF3 /* PasswordCriteriaView.swift */,
+				B06200852BD1426600E64EF3 /* PasswordStatusView.swift */,
+			);
+			path = PasswordStatusView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +161,9 @@
 			files = (
 				B062006E2BD0FBB800E64EF3 /* ViewController.swift in Sources */,
 				B062006A2BD0FBB800E64EF3 /* AppDelegate.swift in Sources */,
+				B06200832BD1189B00E64EF3 /* PasswordCriteriaView.swift in Sources */,
+				B06200862BD1426600E64EF3 /* PasswordStatusView.swift in Sources */,
+				B062007F2BD1006000E64EF3 /* PasswordTextField.swift in Sources */,
 				B062006C2BD0FBB800E64EF3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
