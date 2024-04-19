@@ -12,10 +12,12 @@ class PasswordStatusView: UIView {
     
     let stackView = UIStackView()
     let lengthCriteriaView = PasswordCriteriaView(text: "8-32 characters (no spaces)")
-    let uppercaseCriteriaView = PasswordCriteriaView(text: "uppercase letter (A-Z)")
-    let lowerCaseCriteriaView = PasswordCriteriaView(text: "lowercase (a-z)")
-    let digitCriteriaView = PasswordCriteriaView(text: "digit (0-9)")
-    let specialCharacterCriteriaView = PasswordCriteriaView(text: "special character (e.g. !@#$%^)")
+    let uppercaseCriteriaView = PasswordCriteriaView(text: "Uppercase letter (A-Z)")
+    let lowerCaseCriteriaView = PasswordCriteriaView(text: "Lowercase (a-z)")
+    let digitCriteriaView = PasswordCriteriaView(text: "Digit (0-9)")
+    let specialCharacterCriteriaView = PasswordCriteriaView(text: "Special character (e.g. !@#$%^)")
+    
+    var shouldResetCriteria: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,5 +69,73 @@ extension PasswordStatusView {
             bottomAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 2)
         ])
         
+    }
+}
+
+extension PasswordStatusView {
+    func updateDisplay(_ text: String) {
+        let lengthAndNoSpaceMet = PasswordCriteria.lenghtAndNoSpaceMet(text)
+        let uppercaseMet = PasswordCriteria.uppercaseMet(text)
+        let lowercaseMet = PasswordCriteria.lowercaseMet(text)
+        let digitMet = PasswordCriteria.digitMet(text)
+        let specialCharacterMet = PasswordCriteria.specialCharacterMet(text)
+
+        if shouldResetCriteria {
+            // Inline validation (✅ or ⚪️)
+            lengthAndNoSpaceMet
+                ? lengthCriteriaView.isCriteriaMet = true
+                : lengthCriteriaView.reset()
+            
+            uppercaseMet
+                ? uppercaseCriteriaView.isCriteriaMet = true
+                : uppercaseCriteriaView.reset()
+            
+            lowercaseMet
+                ? lowerCaseCriteriaView.isCriteriaMet = true
+                : lowerCaseCriteriaView.reset()
+
+            digitMet
+                ? digitCriteriaView.isCriteriaMet = true
+                : digitCriteriaView.reset()
+            
+            specialCharacterMet
+                ? specialCharacterCriteriaView.isCriteriaMet = true
+                : specialCharacterCriteriaView.reset()
+        } else {
+            // Focus lost (✅ or ❌)
+            lengthCriteriaView.isCriteriaMet = lengthAndNoSpaceMet
+            uppercaseCriteriaView.isCriteriaMet = uppercaseMet
+            lowerCaseCriteriaView.isCriteriaMet = lowercaseMet
+            digitCriteriaView.isCriteriaMet = digitMet
+            specialCharacterCriteriaView.isCriteriaMet = specialCharacterMet
+        }
+    }
+    
+    func validate(_ text: String) -> Bool {
+        let uppercaseMet = PasswordCriteria.uppercaseMet(text)
+        let lowercaseMet = PasswordCriteria.lowercaseMet(text)
+        let digitMet = PasswordCriteria.digitMet(text)
+        let specialCharacterMet = PasswordCriteria.specialCharacterMet(text)
+        
+        let checkable = [uppercaseMet, lowercaseMet, digitMet, specialCharacterMet]
+        let metCriteria = checkable.filter { $0 }
+        let lengthAndNoSpaceMet = PasswordCriteria.lenghtAndNoSpaceMet(text)
+        
+        if lengthAndNoSpaceMet && metCriteria.count >= 3 {
+            return true
+        }
+
+        // Ready Player1 🕹
+        // Check for 3 of 4 criteria here...
+        
+        return false
+    }
+    
+    func reset() {
+        lengthCriteriaView.reset()
+        uppercaseCriteriaView.reset()
+        lowerCaseCriteriaView.reset()
+        digitCriteriaView.reset()
+        specialCharacterCriteriaView.reset()
     }
 }
